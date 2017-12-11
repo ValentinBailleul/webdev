@@ -1,0 +1,185 @@
+@media screen and (min-width : 1200px) {
+    body {
+        background-image: url("http://www.elegantwallpapers.com/wp-content/wallpapers/800x480/02140_800x480.jpg");
+        position: center;
+        overflow: scroll;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: "Times-New-Roman";
+    }
+    .photoA {
+        display: inline-block;
+    }
+    
+    #filmographie {
+        display: flex;
+    }
+
+
+    #scarface {
+        flex: 1;
+    }
+
+
+    #rushhour {
+        flex: 1;
+    }
+
+
+    #xmen {
+        flex: 1;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+        font-family: Calibri;
+        font-size:100px;
+        border-style: ridge;
+        border-width: 5px;
+        border-color: white;
+    }
+
+
+    h2 {
+        color: white;
+        font-family: Calibri;
+        font-size: 50px;
+    }
+
+
+    time {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: white;
+        overflow: hidden;
+    }
+
+
+    p {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: white;
+        overflow: hidden;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-family: Calibri;
+        font-size:30px;
+        border-style: ridge;
+        border-width: 5px;
+        border-color: white;
+    }
+
+
+    figcaption {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: white;
+        overflow: hidden;
+    }
+
+
+    #photoL img {
+        max-height : 300px;
+        max-width : 300px;
+    }
+
+
+    #filmographie img{
+        height : 300px;
+        width : 225px;
+    }
+}
+
+
+@media screen and (max-width : 1199px) {
+    body {
+        position: center;
+        overflow: scroll;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: "Times-New-Roman";
+    }
+
+    h1 {
+        color: black;
+        text-align: center;
+        font-family: Calibri;
+        font-size:100px;
+        border-style: ridge;
+        border-width: 5px;
+        border-color: black;
+    }
+
+
+    h2 {
+        color: black;
+        font-family: Calibri;
+        font-size: 50px;
+    }
+
+
+    time {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: black;
+        overflow: hidden;
+    }
+
+
+    p {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: black;
+        overflow: hidden;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        font-family: Calibri;
+        font-size:30px;
+        border-style: ridge;
+        border-width: 5px;
+        border-color: white;
+    }
+
+
+    figcaption {
+        font-family: "sans-serif";
+        margin-left: 1px;
+        font-size: 20px;
+        color: black;
+        overflow: hidden;
+    }
+
+
+    #photoL img {
+        max-height : 300px;
+        max-width : 300px;
+    }
+
+
+    #filmographie img{
+        max-height : 300px;
+        max-width : 300px;
+    }
+}
+
+
+
+
+
+
