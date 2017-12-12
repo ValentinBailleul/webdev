@@ -29,56 +29,12 @@ mysqli_set_charset($dbLink, 'utf8');
 <article>
     <?php getBlock("./php/header.php"); ?>
     <?php
-    $id = $_GET['idFilm'];
-    $queryFilm = "SELECT * FROM film WHERE id =".$id;
-    $stmt = mysqli_prepare($dbLink, $queryFilm)
-    or die('Échec de paramétrage de la requête : ' . mysqli_error($dbLink));
-    mysqli_stmt_execute($stmt)
-    or die('Erreur dans la requête : ' . mysqli_error($dbLink));
-    $result = mysqli_stmt_get_result($stmt);
-    $films = [];
-    if (mysqli_num_rows($result) != 0) {
-        while ($film = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $queryActeur = "SELECT * FROM personne JOIN film_has_personne ON personne.id = film_has_personne.id_personne WHERE film_has_personne.id_film = $film[id] AND role = 'acteur'";
-            $stmt2 = mysqli_prepare($dbLink, $queryActeur)
-            or die('Échec de paramétrage de la requête : ' . mysqli_error($dbLink));
-            mysqli_stmt_execute($stmt2)
-            or die('Erreur dans la requête : ' . mysqli_error($dbLink));
-            $result2 = mysqli_stmt_get_result($stmt2);
-            if (mysqli_num_rows($result2) != 0) {
-                while ($acteur = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
-                    $film['acteurs'][] = $acteur;
-                }
-            }
-            $films[] = $film;
-        }
-    } else {
-        echo 'Pas de résultats';
-    }
     foreach ($films as $film){
-        getBlock("./php/infoFilm.php", $film);
+        getBlock("./infoFilm.php", $film);
     }
     ?>
     <?php
-        $dbLink = mysqli_connect('mysql-webdev.alwaysdata.net', 'webdev_hercule', '04051997')
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
 
-        mysqli_select_db($dbLink, 'webdev_hercule')
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-
-        $queryPhoto = "SELECT * FROM photo JOIN film_has_photo ON photo.id = film_has_photo.id_photo WHERE role = 'gallerie' AND id_film =".$id;
-        $stmt = mysqli_prepare($dbLink, $queryPhoto)
-        or die('Échec de paramétrage de la requête : ' . mysqli_error($dbLink));
-        mysqli_stmt_execute($stmt)
-        or die('Erreur dans la requête : ' . mysqli_error($dbLink));
-        $result = mysqli_stmt_get_result($stmt);
-        if (mysqli_num_rows($result) != 0) {
-            while ($photoR = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                getBlock("./php/imageL.php", $photoR);
-            }
-        } else {
-            echo 'Pas de résultats';
-        }
     ?>
 
 </article>
@@ -106,7 +62,7 @@ mysqli_set_charset($dbLink, 'utf8');
     $requeteR = mysqli_query($dbLink ,$queryRealisateur);
     $result = mysqli_fetch_assoc($requeteR);
     ?>
-    <form action = "./php/rechercheRealisateur.php"  method ="post">
+    <form action = "../php/rechercheRealisateur.php" method ="post">
         <input type = "text" name = "listeRealisateur" value = "<?php echo $result['id']  ?>" hidden>
         <button type = "submit">En savoir plus</button>
     </form>
@@ -139,7 +95,7 @@ mysqli_set_charset($dbLink, 'utf8');
     while($result = mysqli_fetch_assoc($requeteR)){
     ?>
 
-    <form action = "./php/rechercheActeur.php"  method ="post">
+    <form action = "../php/rechercheActeur.php" method ="post">
         <input type = "text" name = "listeActeur" value = "<?php echo $result['id']  ?>" hidden>
         <button type = "submit">En savoir plus</button>
     </form>
