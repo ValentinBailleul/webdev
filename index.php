@@ -5,7 +5,7 @@ ini_set('display_errors', 'on');
 ini_set('log_errors', 'on');
 ini_set('error_log', '/path/to/log/php.log');
 
-include('php/fonction.php');
+include('./Model/fonction.php');
 
 $dbLink = mysqli_connect('mysql-webdev.alwaysdata.net', 'webdev_hercule', '04051997')
 or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
@@ -13,6 +13,12 @@ or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
 mysqli_select_db($dbLink, 'webdev_hercule')
 or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
 mysqli_set_charset($dbLink, 'utf8');
+
+//echo $_SERVER['REQUEST_URI'];
+require_once 'Controller/MovieController.php';
+MovieController::defaut();
+die;
+
 ?>
 
 <!doctype html>

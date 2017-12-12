@@ -24,27 +24,23 @@ mysqli_set_charset($dbLink, 'utf8');
 <body>
 <?php include "./header.php" ?>
 <article>
-
     <?php
     //biographie
-    foreach ($data as $photo){
-        getBlock("./biographie.php", $photo);
-    }
+        getBlock("./biographie.php", $data['bio']);
+
     ?>
 
     <h2>Filmographie</h2>
 <?php
     //filmographie
-    foreach ($data as $photoRL){
-        getBlock("./filmographie.php", $photoRL);
-    }
+        getBlock("./filmographie.php", $data['filmo']);
 ?>
 
     <h2>Acteurs fétiches</h2>
     <?php
     //fetiche
     foreach ($data as $acteur){
-        getBlock("./acteurFetiche.php", $acteur);
+        getBlock("./acteurFetiche.php", $data['acteurs']);
     }
     ?>
         </article>

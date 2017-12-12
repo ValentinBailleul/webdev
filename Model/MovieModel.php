@@ -83,15 +83,68 @@ class MovieModel
         mysqli_stmt_execute($stmt)
         or die('Erreur dans la requête : ' . mysqli_error($dbLink));
         $result = mysqli_stmt_get_result($stmt);
+        $photoRL = [];
         if (mysqli_num_rows($result) != 0) {
             while ($photoR = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                getBlock("./php/imageL.php", $photoR);
+                $photoRL[] = $photoR;
             }
         } else {
             echo 'Pas de résultats';
         }
 
-        return $photoR;
+        return $photoRL;
+    }
+
+    public function getAllMoviesRealisateur ()
+    {
+        $dbLink = mysqli_connect('mysql-webdev.alwaysdata.net', 'webdev_hercule', '04051997')
+        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+
+        mysqli_select_db($dbLink, 'webdev_hercule')
+        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+
+        $queryPhoto = "SELECT * FROM photo JOIN personne_has_photo ON photo.id = personne_has_photo.id_photo JOIN film_has_personne ON personne_has_photo.id_personne = film_has_personne.id_personne WHERE film_has_personne.id_film =".$id." AND film_has_personne.role = 'realisateur'";
+        $stmt = mysqli_prepare($dbLink, $queryPhoto)
+        or die('Échec de paramétrage de la requête : ' . mysqli_error($dbLink));
+        mysqli_stmt_execute($stmt)
+        or die('Erreur dans la requête : ' . mysqli_error($dbLink));
+        $result = mysqli_stmt_get_result($stmt);
+        print_r($result);
+        $photo = [];
+        if (mysqli_num_rows($result) != 0) {
+        while ($photoR = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $photo[] = $photoR;
+        }
+        } else {
+            echo 'Pas de résultats';
+        }
+        return $photo;
+    }
+
+    public function getAllMoviesActeur()
+    {
+        $dbLink = mysqli_connect('mysql-webdev.alwaysdata.net', 'webdev_hercule', '04051997')
+        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+
+        mysqli_select_db($dbLink, 'webdev_hercule')
+        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+
+        $queryPhoto2 = "SELECT * FROM photo JOIN personne_has_photo ON photo.id = personne_has_photo.id_photo JOIN film_has_personne ON personne_has_photo.id_personne = film_has_personne.id_personne WHERE film_has_personne.id_film =" . $id . " AND film_has_personne.role = 'acteur'";
+        $stmt = mysqli_prepare($dbLink, $queryPhoto2)
+        or die('Échec de paramétrage de la requête : ' . mysqli_error($dbLink));
+        mysqli_stmt_execute($stmt)
+        or die('Erreur dans la requête : ' . mysqli_error($dbLink));
+        $result = mysqli_stmt_get_result($stmt);
+        $acteurs = [];
+        if (mysqli_num_rows($result) != 0) {
+            while ($acteur = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $acteurs[] = $acteur;
+            }
+        } else {
+            echo 'Pas de résultats';
+        }
+
+        return $acteurs;
     }
 
 }

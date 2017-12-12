@@ -15,15 +15,16 @@ class RealisateurController
     public function defaut() {
 
         require_once 'Model/ActeurModel.php';
-
-
         $photos = RealisateurModel::getAllDirectorsBio();
-        getBlock("View/realisateur.php", $photos);
-
         $photoRL = RealisateurModel::getAllDirectorsFilmo();
-        getBlock("../View/realisateur.php", $photoRL);
-
         $acteurs = RealisateurModel::getAllDirectorsFetiche();
-        getBlock("../View/realisateur.php", $acteurs);
+        $tabGet = [
+                    'bio'=> $photos,
+                    'filmo'=> $photoRL,
+                    'acteurs' => $acteurs,
+                  ];
+
+
+        getBlock("View/realisateur.php", $tabGet);
     }
 }

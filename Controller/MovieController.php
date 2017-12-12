@@ -11,16 +11,22 @@ ini_set("display_error", "on");
 
 class MovieController
 {
-    public function defaut() {
+    public static function defaut() {
 
         require_once 'Model/MovieModel.php'; //Controle de CreerCompte dans Model
 
-        require_once 'View/header.php';
+        $films = MovieModel::getAllMoviesInfo();
+        $photoRL = MovieModel::getAllMoviesImageL();
+        $photo = MovieModel::getAllMoviesRealisateur();
+        $acteurs = MovieModel::getAllMoviesActeur();
+        $tabGet = [
+            'info'=> $films,
+            'imageL'=> $photoRL,
+            'realisateur' => $photo,
+            'acteur' => $acteurs,
+        ];
 
-        require_once 'View/imageL.php';
+        getBlock("View/movie.php", $tabGet);
 
-        require_once 'View/Arealisateur.php';
-
-        require_once 'View/Aacteur.php';
     }
 }

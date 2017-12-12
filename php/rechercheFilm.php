@@ -6,4 +6,4 @@
  * Time: 09:24
  */
 $id = $_POST['listeFilm'];
-header("location: ../movie.php?idFilm=".$id);
+header("location: ../View/movie.php?idFilm=".$id);
